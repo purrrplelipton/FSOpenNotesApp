@@ -16,7 +16,7 @@ const App = () => {
 
   useEffect(() => {
     noteService
-      .getAll()
+      .getAll(`http://localhost:${process.env.PORT || 3001}/api/notes`)
       .then(initialNotes => {
         setItems({
           ...items,
@@ -74,7 +74,7 @@ const App = () => {
       .catch(error => {
         setItems({
           ...items,
-          errorMessage: `Note '${note.content}' was already removed from server`
+          errorMessage: `Note with id ${note.id} was already removed from server`
         });
         setTimeout(() => {
           setItems({
