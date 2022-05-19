@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseUrl = "http://localhost:3001/notes";
+const baseUrl = `http://localhost:${process.env.PORT || 3001}/notes`;
 
 const getAll = () => {
   const req = axios.get(baseUrl);
@@ -15,6 +15,10 @@ const create = newObject => {
 const update = (id, newObject) => {
   const req = axios.put(`${baseUrl}/${id}`, newObject);
   return req.then( res => res.data );
+}
+
+const dltNote = (id) => {
+  
 }
 
 const noteService = { getAll, create, update };
